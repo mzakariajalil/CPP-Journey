@@ -1,0 +1,141 @@
+#include<iostream>
+using namespace std;
+#include <string>
+/*  
+the situdation all reading materials in the library have a title an author a  unique id number
+a method to display their details 
+book has number of pages genre
+magazine has issue number and month of publication 
+audio book has duration and narrator name
+task_ the program should store store common info properly 
+store spicial info for each type
+display full details of any material
+create two books two magazines two audio books
+
+extra challenge_add a function that pricnts 'this is al long reading material if it has more than 300 pages or more than 60 mins
+other wise this is short reading material
+*/
+
+class library{
+	protected:
+	string title;
+	string author_name;
+	int id;
+	
+	virtual void display(){
+		cout<<"title: "<<title<<endl;
+		cout<<"author: "<<author_name<<endl;
+		cout<<"id"<<id<<endl;
+	}
+	
+	
+	};
+	class book:library{
+		protected:
+	int numberOfPages;
+	string genre;
+	
+	public:
+	void display()override{
+		cout<<"\n\t-------------------\n";
+		cout<<"title: "<<title<<endl;
+		cout<<"author: "<<author_name<<endl;
+		cout<<"id"<<id<<endl;
+		cout<<"numberOfPages: "<<numberOfPages<<endl;
+		cout<<"genre: "<<genre<<endl;
+		cout<<"\n\t-------------------\n";
+
+	}
+			void setter(string title, string author, int id, int numpages, string genre){
+			this->author_name=author;
+			this->title=title;
+			this->id=id;
+			this->numberOfPages=numpages;
+			this->genre=genre;
+		}
+	
+};
+class magazine:library{
+	protected:
+	int issueNumber;
+	string month;
+	
+		public:
+	void display()override{
+		cout<<"\n\t-------------------\n";
+		cout<<"title: "<<title<<endl;
+		cout<<"author: "<<author_name<<endl;
+		cout<<"id"<<id<<endl;
+		cout<<"issueNumber: "<<issueNumber<<endl;
+		cout<<"monthOfPublication: "<<month<<endl;
+		cout<<"\n\t-------------------\n";
+
+	}
+			void setter(string title, string author, int id, int issueNumber, string month){
+			this->author_name=author;
+			this->title=title;
+			this->id=id;
+			this->issueNumber=issueNumber;
+			this->month=month;
+		}
+	
+};
+
+class audioBook:library{
+	protected:
+	float duration;
+	string nameOfNarator;
+	
+		public:
+	void display()override{
+		cout<<"\n\t-------------------\n";
+		cout<<"title: "<<title<<endl;
+		cout<<"author: "<<author_name<<endl;
+		cout<<"id"<<id<<endl;
+		cout<<"duration: "<<duration<<endl;
+		cout<<"nameOfNarator: "<<nameOfNarator<<endl;
+		cout<<"\n\t-------------------\n";
+
+	}
+			void setter(string title, string author, int id, float duration, string nameOfNarator){
+			this->author_name=author;
+			this->title=title;
+			this->id=id;
+			this->duration=duration;
+			this->nameOfNarator=nameOfNarator;
+		}
+	
+	
+};
+	
+
+
+int main(){
+	book book1;
+	book book2;
+	book1.setter("physics","tesla",1,100,"educationnal");
+	book2.setter("math","galalio",2,400,"educational");
+	book1.display();
+	book2.display();
+	
+	audioBook Abook1;
+	audioBook Abook2;
+	Abook1.setter("audio physics","tesla",1,60.01,"bradPit");
+	Abook2.setter("audio math","tesla",2,30.01,"james");
+	Abook1.display();
+	Abook2.display();
+	
+	
+	magazine magazine1;
+	magazine magazine2;
+	
+	magazine1.setter("xmen magazine", "ironman",1,30,"june");
+	magazine2.setter("DC magazine", "superman",2,20,"feb");
+	magazine1.display();
+	magazine2.display();
+
+	
+	
+	
+	
+}

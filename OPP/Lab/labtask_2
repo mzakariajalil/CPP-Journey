@@ -1,0 +1,57 @@
+#include <iostream>
+using namespace std;
+
+class delivery{
+	protected:
+		int id;
+		double bill;
+		string name;
+		void setter(int id, double bill, string name){
+				this->id=id;
+				this->bill=bill;
+				this->name=name;
+				
+			}
+		
+		void display(){
+			cout<<"ID: "<<id<<endl;
+			cout<<"bill: "<<bill<<endl;
+			cout<<"name: "<<name<<"\n\n\n";
+		}
+		
+};
+class expDelivery:protected delivery{
+	private:
+		string priLevel;
+		
+		public:
+			using delivery :: setter;
+			void setter(int id, double bill, string name, string priLevel){
+				this->id=id;
+				this->bill=bill;
+				this->name=name;
+				this->priLevel=priLevel;
+				
+			}
+			using delivery::display;
+			void display(bool express){
+			cout<<"ID: "<<id<<endl;
+			cout<<"bill: "<<bill<<endl;
+			cout<<"name: "<<name<<endl;
+			cout<<"priority level: "<<priLevel<<"\n\n\n";
+		}
+			
+};
+
+int main(){
+	expDelivery order1;
+	order1.setter(101,505.34,"ali");
+	order1.display();
+	
+	expDelivery order2;
+	order2.setter(101,505.34,"ali","high");
+	order2.display(1);
+
+	
+	
+}
